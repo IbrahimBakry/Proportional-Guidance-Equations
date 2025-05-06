@@ -1,0 +1,16 @@
+function [zp]=funBlas(x,z)
+A=0.8;
+Vm=480;
+Vb=300;
+
+delta_b = z(1);
+r= z(2);
+delta_m = z(3);
+
+r = vb*cos(delta_b) - Vm*cos(delta_m);
+delta_m = (1-A)*(1/r)*(Vm*sin(delta_m) - Vb*sin(delta_b));
+delta_b = (1/r)*(Vm*sin(delta_m) - Vb*sin(delta_b));
+zp=[delta_m;
+    r;
+    delta_b];
+end
